@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ryani.com</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Nunito:wght@400;700;900&family=Bungee&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#facc15", // Bright Yellow
+              "dark": "rgb(88 89 91)",
+            },
+            fontFamily: {
+              display: ["Fredoka One", "cursive"],
+              body: ["DM Sans", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              xl: "2rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Lilita+One&display=swap");
+      .area {
+        background: #f3f3f3;  
+        background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      .circles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      .circles li {
+        position: absolute;
+        display: block;
+        list-style: none;
+        width: 20px;
+        height: 20px;
+        background: rgba(218, 206, 206, 0.411);
+        animation: animateCircles 25s linear infinite;
+        bottom: -150px;
+      }
+
+      .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+      .circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+      .circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+      .circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+      .circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+      .circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+      .circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+      .circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+      .circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+      .circles li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+      @keyframes animateCircles {
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+        100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+      }
+
+      .glossy {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.4) 0%,
+          rgba(255, 255, 255, 0) 50%,
+          rgba(0, 0, 0, 0.1) 100%
+        );
+      }
+      .nav-btn {
+        color: #8f2d5d !important;
+        background: linear-gradient(145deg, #ffd5e7, #f8b8d3);
+        transition: all 0.2s ease-in-out;
+        position: relative;
+        z-index: 1;
+      }
+      .nav-btn:before, .nav-btn:after {
+        position: absolute;
+        content: '';
+        display: block;
+        width: 140%;
+        height: 100%;
+        left: -20%;
+        z-index: -1;
+        transition: all ease-in-out 0.5s;
+        background-repeat: no-repeat;
+      }
+      .nav-btn:before {
+        display: none;
+        top: -75%;
+        background-image:  
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%),
+          radial-gradient(circle,  transparent 20%, rgba(255, 255, 255, 0.6) 20%, transparent 30%),
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%), 
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%),
+          radial-gradient(circle,  transparent 10%, rgba(255, 255, 255, 0.6) 15%, transparent 20%),
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%),
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%),
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%),
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%);
+        background-size: 16px 16px, 32px 32px, 24px 24px, 32px 32px, 28px 28px, 16px 16px, 24px 24px, 16px 16px, 28px 28px;
+      }
+      .nav-btn:after {
+        display: none;
+        bottom: -75%;
+        background-image:  
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%), 
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%),
+          radial-gradient(circle,  transparent 10%, rgba(255, 255, 255, 0.6) 15%, transparent 20%),
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%),
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%),
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%),
+          radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%);
+        background-size: 24px 24px, 32px 32px, 28px 28px, 32px 32px, 24px 24px, 16px 16px, 32px 32px;
+      }
+      .nav-btn.animate:before {
+        display: block;
+        animation: topBubbles ease-in-out 0.75s forwards;
+      }
+      .nav-btn.animate:after {
+        display: block;
+        animation: bottomBubbles ease-in-out 0.75s forwards;
+      }
+      @keyframes topBubbles {
+        0% { background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%; }
+        50% { background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%; }
+        100% { background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%; background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%; }
+      }
+      @keyframes bottomBubbles {
+        0% { background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%; }
+        50% { background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%; }
+        100% { background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%; background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%; }
+      }
+      .nav-btn:active {
+        box-shadow: inset 8px 8px 14px rgba(214, 130, 164, 0.5), inset -8px -8px 14px rgba(255, 255, 255, 0.9) !important;
+        transform: translateY(2px);
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      
+      .waves-container { width: 100%; transform: rotate(180deg); margin-top: -1px; }
+      .waves { position: relative; width: 100%; height: 10vh; min-height: 80px; max-height: 120px; }
+      .parallax > use { animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite; }
+      .parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+      .parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+      .parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+      .parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+      @keyframes move-forever { 0% { transform: translate3d(-90px,0,0); } 100% { transform: translate3d(85px,0,0); } }
+      .social-menu { display: flex; margin-top: 40px; justify-content: flex-end; }
+      .social-menu ul { position: relative; display: flex; transform: rotate(-25deg) skew(25deg); transform-style: preserve-3d; padding: 0; margin: 0; }
+      .social-menu ul li { position: relative; list-style: none; width: 60px; height: 60px; margin: 0px 20px; }
+      .social-menu ul li:before { content: ''; position: absolute; top: 100%; left: 0; width: 100%; height: 10px; background: #2a2a2a; transform-origin: top; transform: skewX(-45deg); }
+      .social-menu ul li:after { content: ''; position: absolute; top: 0; left: -10px; width: 10px; height: 100%; background: #2a2a2a; transform-origin: right; transform: skewY(-45deg); }
+      .social-menu ul li span { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex !important; background: #2a2a2a; justify-content: center; align-items: center; color: #fff; font-size: 30px !important; transition: 1.5s ease-out; }
+      .social-menu ul li:hover span { z-index: 1000; transition: .3s; color: #fff; box-shadow: -1px 1px 1px rgba(0, 0, 0, .5); }
+      .social-menu ul li:hover span:nth-child(5){ transform: translate(40px, -40px); opacity: 1; }
+      .social-menu ul li:hover span:nth-child(4){ transform: translate(30px, -30px); opacity: .8; }
+      .social-menu ul li:hover span:nth-child(3){ transform: translate(20px, -20px); opacity: .6; }
+      .social-menu ul li:hover span:nth-child(2){ transform: translate(10px, -10px); opacity: .4; }
+      .social-menu ul li:hover span:nth-child(1){ transform: translate(0px, 0px); opacity: .2; }
+      .social-menu ul li:nth-child(1):hover span{ background: #0077b5 !important; }
+      .social-menu ul li:nth-child(2):hover span{ background: #8b5cf6 !important; }
+      
+      .nav-tab {
+        position: relative;
+        color: white !important;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1.5px;
+        background: transparent !important;
+        border: none !important;
+        padding: 5px 0 !important;
+        opacity: 0.7;
+        transition: all 0.3s ease !important;
+        cursor: pointer;
+        min-width: auto !important;
+      }
+      .nav-tab:hover, .nav-tab.active-tab {
+        opacity: 1;
+        transform: translateY(-2px);
+      }
+      .nav-tab::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      .nav-tab:hover::after, .nav-tab.active-tab::after {
+        width: 100%;
+      }
+
+      .projetos-app {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        max-height: 80vh;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .translate-center {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%; 
+      }
+      .nav {
+        z-index: 50; 
+        cursor: pointer;
+        top: 92%;
+      }
+      .nav .material-icons {
+        background: rgba(255, 255, 255, 0.7);
+        padding: 15px;
+        border-radius: 99em;
+        color: #333;
+      }
+      .title {
+        top: 38%;
+        font-size: 50px;
+        md-font-size: 75px;
+        font-family: "Lilita One", cursive;
+        text-transform: uppercase;
+        white-space: pre-wrap;
+        z-index: 30;
+        text-align: center;
+        width: 100%;
+      }
+      @media (min-width: 768px) { .title { font-size: 75px; } }
+      .subtitle {
+        top: 58%;
+        text-align: center;
+        z-index: 30;
+        font-family: sans-serif;
+        color: rgba(255, 255, 255, 0.9);
+        width: 60%;
+        font-weight: bold;
+      }
+      .bg-container {
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        display: none;
+      }
+      .gradient {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 400%;
+        will-change: transform;
+      }
+      .segment {
+        display: flex;
+        position: relative;
+        width: 100%; /* Each segment takes 100% of the gradient's parent (bg-container) width */
+        border: none; /* No border to prevent visual gaps */
+        /* Removed margin: 0 -1px; to ensure perfect abutment without explicit overlap/underlap */
+      }
+      /* Edite os Hexadecimais (#f0ae5c, etc) para mudar a combinação de cores de cada slide */
+      .morning { background-image: linear-gradient(90deg, #956B0C, #CD9004, #E5E600, #B0E600, #86C34E); } /* Projeto 1 */
+      .afternoon { background-image: linear-gradient(90deg, #86C34E, #7BC089, #DDEDBA, #FFE26C, #FFD218); }                /* Projeto 2 */
+      .evening { background-image: linear-gradient(90deg,#FFD218,#C45EC4,  #AF305B, #4B57AE, #8A98F9); }                  /* Projeto 3 */
+      .night { background-image: linear-gradient(90deg, #4b2c84, #1d2259); }                            /* Projeto 4 */
+      .circle-container {
+        position: relative;
+        display: flex;
+        margin-top: 0;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+      .circle {
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: #fff;
+        opacity: 0.06;
+        transform: translate(-50%, -50%);
+      }
+      .circle1 { height: 30em; width: 30em; }
+      .circle2 { height: 60em; width: 60em; }
+      .circle3 { height: 90em; width: 90em; }
+      .circle4 { height: 120em; width: 120em; }
+    </style>
+  </head>
+  <body
+    class="font-body min-h-screen text-white overflow-x-hidden"
+  >
+    <div class="area">
+      <ul class="circles">
+        <li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li>
+      </ul>
+    </div>
+
+    <header class="bg-[#ff0d66] w-full sticky top-0 z-[200] ">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 px-6 py-4">
+        <div class="relative shrink-0">
+          <h1 class="font-display text-4xl md:text-5xl italic tracking-tighter drop-shadow-xl flex items-baseline">
+            <span class="text-white">Ryani</span>
+            <span class="text-white text-2xl">.com</span>
+          </h1>
+        </div>
+
+        <nav class="flex gap-8 items-center flex-wrap justify-center">
+          <button class="nav-btn nav-tab active-tab" data-target="sobre-mim">Sobre Mim</button>
+          <button class="nav-tab" data-target="producoes">Produções</button>
+          <button class="nav-tab" data-target="projetos-sociais">Projetos Sociais</button>
+          <button class="nav-tab" data-target="experiencias">Experiências</button>
+        </nav>
+        
+        <div class="flex items-center gap-2 shrink-0">
+          <div class="flex items-center gap-3 font-black text-sm tracking-tighter text-white">
+            <button onclick="changeLanguage('pt')" id="lang-pt" class="lang-btn hover:text-primary transition-colors cursor-pointer border-b-2 border-white">PT</button>
+            <span class="opacity-30">|</span>
+            <button onclick="changeLanguage('en')" id="lang-en" class="lang-btn hover:text-primary transition-colors cursor-pointer opacity-60">EN</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Waves Effect -->
+    <div class="waves-container">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255, 13, 102, 0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255, 13, 102, 0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255, 13, 102, 0.7)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#ff0d66" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="max-w-6xl mx-auto">
+      <main class="w-full min-h-[60vh] flex flex-col relative transition-all duration-500 rounded-3xl mb-12">
+        
+        <!-- Section: Sobre Mim -->
+        <section id="sobre-mim" class="portfolio-section w-full min-h-full py-12 flex flex-col items-center justify-center gap-20 animate-fade-in my-auto px-4">
+          <div class="flex flex-col md:flex-row items-center justify-center gap-10 w-full">
+            <div class="w-48 h-48 md:w-72 md:h-72 rounded-full overflow-hidden shrink-0 ">
+                <img class="w-full h-full object-cover" src="./perfil.png" alt="Profile">
+              </div>
+            <div class="text-left max-w-2xl">
+              <h1 class="font-display text-4xl md:text-5xl drop-shadow-lg mb-4">
+                <span class="text-primary text-xl md:text-3xl">&lt;h1&gt;</span>
+                <span class="text-dark" id="intro-title">Olá! Eu sou a Ryani</span>
+                <span class="text-primary text-xl md:text-3xl">&lt;/h1&gt;</span>
+              </h1>
+              <p class="font-bold text-base md:text-xl text-dark leading-relaxed drop-shadow">
+                <span class="text-primary text-lg md:text-2xl">&lt;p&gt;</span>
+                <span id="intro-text">Sou estudante de Sistemas de Informação na UFOPA e exploradora no mundo do design, desenvolvimento web e jogos digitais. Desenvolvo experiências digitais dinâmicas, interativas e com uma identidade visual única.</span>
+                <span class="text-primary text-lg md:text-2xl">&lt;/p&gt;</span>
+              </p>
+              
+              <div class="social-menu">
+                <ul> 
+                  <li>
+                    <a href="https://www.linkedin.com/in/ryani-ramos/">
+                      <span></span><span></span><span></span><span></span>
+                      <span class="fa fa-linkedin"></span>
+                    </a> 
+                  </li>
+                  <li>
+                    <a href="https://github.com/Ryani-git">
+                      <span></span><span></span><span></span><span></span>
+                      <span class="fa fa-github"></span>
+                    </a> 
+                  </li>
+                </ul>  
+              </div>
+            </div>
+          </div>
+
+          <!-- Habilidades -->
+          <div class="w-full flex items-start flex-col gap-8 mt-20">
+            <h2 class="font-display text-3xl md:text-4xl text-dark dark:text-white mb-6 w-full" id="skills-title">Habilidades</h2>
+            
+            <div class="w-full rounded-3xl">
+              <div class="flex flex-wrap justify-center md:justify-start gap-6">
+                <div class="flex flex-col items-center gap-2 group">
+                  <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border-2 border-white/20 group-hover:bg-[#1572B6]/20 group-hover:border-[#1572B6] transition-colors duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="devicon-css3-plain colored text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                  </div>
+                  <span class="font-black text-dark dark:text-gray-200 text-xs md:text-sm tracking-wider uppercase">CSS3</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                  <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border-2 border-white/20 group-hover:bg-[#F7DF1E]/20 group-hover:border-[#F7DF1E] transition-colors duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="devicon-javascript-plain colored text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                  </div>
+                  <span class="font-black text-dark dark:text-gray-200 text-xs md:text-sm tracking-wider uppercase">JavaScript</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                  <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border-2 border-white/20 group-hover:bg-[#7952B3]/20 group-hover:border-[#7952B3] transition-colors duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="devicon-bootstrap-plain colored text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                  </div>
+                  <span class="font-black text-dark dark:text-gray-200 text-xs md:text-sm tracking-wider uppercase">Bootstrap</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                  <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border-2 border-white/20 group-hover:bg-[#38B2AC]/20 group-hover:border-[#38B2AC] transition-colors duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="devicon-tailwindcss-plain colored text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                  </div>
+                  <span class="font-black text-dark dark:text-gray-200 text-xs md:text-sm tracking-wider uppercase">Tailwind</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                  <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border-2 border-white/20 group-hover:bg-[#CC6699]/20 group-hover:border-[#CC6699] transition-colors duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="devicon-sass-original colored text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                  </div>
+                  <span class="font-black text-dark dark:text-gray-200 text-xs md:text-sm tracking-wider uppercase">Sass</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                  <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border-2 border-white/20 group-hover:bg-[#61DAFB]/20 group-hover:border-[#61DAFB] transition-colors duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="devicon-react-original colored text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                  </div>
+                  <span class="font-black text-dark dark:text-gray-200 text-xs md:text-sm tracking-wider uppercase">React</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                  <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border-2 border-white/20 group-hover:bg-[#777BB4]/20 group-hover:border-[#777BB4] transition-colors duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="devicon-php-plain colored text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                  </div>
+                  <span class="font-black text-dark dark:text-gray-200 text-xs md:text-sm tracking-wider uppercase">PHP</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                  <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border-2 border-white/20 group-hover:bg-[#3776AB]/20 group-hover:border-[#3776AB] transition-colors duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="devicon-python-plain colored text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                  </div>
+                  <span class="font-black text-dark dark:text-gray-200 text-xs md:text-sm tracking-wider uppercase">Python</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                  <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border-2 border-white/20 group-hover:bg-[#F24E1E]/20 group-hover:border-[#F24E1E] transition-colors duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="devicon-figma-plain colored text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                  </div>
+                  <span class="font-black text-dark dark:text-gray-200 text-xs md:text-sm tracking-wider uppercase">Figma</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 group">
+                  <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border-2 border-white/20 group-hover:bg-[#478cbf]/20 group-hover:border-[#478cbf] transition-colors duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <i class="devicon-godot-plain colored text-5xl group-hover:scale-110 transition-transform duration-300"></i>
+                  </div>
+                  <span class="font-black text-dark dark:text-gray-200 text-xs md:text-sm tracking-wider uppercase">Godot</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Projetos Sociais -->
+        <section id="projetos-sociais" class="portfolio-section hidden w-full py-12 px-4 animate-fade-in my-auto">
+          <div class="flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 text-left">
+              <h2 class="font-display text-4xl md:text-5xl text-dark mb-6" id="social-title">
+                Centro Acadêmico
+              </h2>
+              <p class="font-bold text-lg md:text-xl text-dark leading-relaxed mb-8 drop-shadow-sm" id="social-desc">
+                Engajamento estudantil e organização de iniciativas acadêmicas voltadas para o desenvolvimento técnico e integração dos alunos de Sistemas de Informação.
+              </p>
+              <a id="social-link" href="#" target="_blank" class="inline-flex items-center gap-2  text-[#ff0d66] px-6 py-3 rounded-full font-bold shadow-lg hover:scale-105 active:scale-95 transition-all mb-8">
+                <span id="social-link-text">Veja mais</span>
+                <span class="material-icons text-sm">open_in_new</span>
+              </a>
+              <div class="flex gap-4">
+                <button id="prev-social" class="bg-[#ff0d66] text-white p-4 rounded-full hover:scale-110 active:scale-95 transition-all shadow-lg flex items-center justify-center">
+                  <span class="material-icons">arrow_back</span>
+                </button>
+                <button id="next-social" class="bg-[#ff0d66] text-white p-4 rounded-full hover:scale-110 active:scale-95 transition-all shadow-lg flex items-center justify-center">
+                  <span class="material-icons">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+            <div class="lg:w-1/2 w-full">
+              <div class="grid grid-cols-2 grid-rows-6 gap-4 h-[450px] md:h-[550px]">
+                <div class="row-span-4 col-span-1 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-1 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800" class="w-full h-full object-cover social-img" alt="Social Project">
+                </div>
+                <div class="row-span-3 col-span-1 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:-rotate-1 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800" class="w-full h-full object-cover social-img" alt="Social Project">
+                </div>
+                <div class="row-span-3 col-span-1 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-1 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800" class="w-full h-full object-cover social-img" alt="Social Project">
+                </div>
+                <div class="row-span-2 col-span-1 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:-rotate-1 transition-transform">
+                  <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800" class="w-full h-full object-cover social-img" alt="Social Project">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Produções  -->
+        <section id="producoes" class="portfolio-section hidden w-full  animate-fade-in my-auto">
+          <div id="projetos-vanilla" class="projetos-app mb-12">
+              <div id="title-container" class="translate-center title"></div>
+              <div id="subtitle-container" class="translate-center subtitle"></div>
+              <a id="project-link" href="#" target="_blank" class="translate-center inline-flex items-center gap-2 font-bold text-white hover:text-primary transition-colors" style="top: 75%; z-index: 35; opacity: 0; display: none;">
+                <span id="project-link-text">Acessar Projeto</span>
+                <span class="material-icons text-sm">open_in_new</span>
+              </a>
+              <div id="project-images-container" class="absolute inset-0 z-40 flex items-center justify-center pointer-events-none overflow-hidden"></div>
+              <div class="translate-center nav" id="next-project-btn">
+                <span class="material-icons" id="nav-icon"> arrow_forward </span>
+              </div>
+          </div>
+        </section>
+
+        <!-- Section: Experiências -->
+        <section id="experiencias" class="portfolio-section hidden w-full py-12 px-4 animate-fade-in my-auto text-center">
+          <h2 class="font-display text-4xl md:text-5xl text-dark mb-10" id="exp-header">Experiência Profissional</h2>
+          <div class="max-w-3xl mx-auto space-y-8">
+            <div class="bg-white/50 backdrop-blur-md p-8 rounded-3xl border-2 border-white shadow-xl text-left transform hover:-rotate-1 transition-all">
+              <span class="text-[#ff0d66] font-black text-sm uppercase tracking-widest" id="exp1-date">fev de 2025 - fev de 2026</span>
+              <h3 class="text-2xl font-display text-dark mt-2" id="exp1-title">Bolsista Front-End • UFOPA</h3>
+              <p class="text-dark/70 text-sm font-bold mb-2">Universidade Federal Do Oeste Do Para (CTIC)</p>
+              <p class="text-dark/80 font-bold mt-4 italic" id="exp1-desc">Modernização e adequação do portal universitário ao Padrão Digital do Governo. Atuação no redesign e reestruturação focando em acessibilidade (WCAG 2.1) e aplicação do Design System federal.</p>
+            </div>
+            
+            <div class="bg-white/50 backdrop-blur-md p-8 rounded-3xl border-2 border-white shadow-xl text-left transform hover:rotate-1 transition-all">
+              <span class="text-[#ff0d66] font-black text-sm uppercase tracking-widest" id="exp2-date">set de 2024 - dez de 2024</span>
+              <h3 class="text-2xl font-display text-dark mt-2" id="exp2-title">Instrutora de Informática</h3>
+              <p class="text-dark/70 text-sm font-bold mb-2">Instituto Descarte Correto</p>
+              <p class="text-dark/80 font-bold mt-4 italic" id="exp2-desc">Instrutora de cursos de Informática e Montagem/Manutenção de Computadores. Responsável pela criação de atividades educativas voltadas para inclusão digital e autonomia técnica dos alunos.</p>
+            </div>
+          </div>
+        </section>
+
+
+      </main>
+
+    </div>
+
+    <div class="bg-container" id="slider-bg">
+      <div class="gradient" id="proj-gradient">
+        <div class="segment morning"></div>
+        <div class="segment afternoon"></div>
+        <div class="segment evening"></div>
+        <div class="segment night"></div>
+      </div>
+      <div class="circle-container" id="proj-circles">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+        <div class="circle circle4"></div>
+      </div>
+    </div>
+
+    <script>
+      const translations = {
+        pt: {
+          navSobre: "Sobre Mim",
+          navProducoes: "Produções",
+          navSociais: "Projetos Sociais",
+          navExperiencias: "Experiências",
+          introTitle: "Olá! Eu sou a Ryani",
+          introText: "Sou estudante de Sistemas de Informação na UFOPA e exploradora no mundo do design, desenvolvimento web e jogos digitais. Desenvolvo experiências digitais dinâmicas, interativas e com uma identidade visual única.",
+          skillsTitle: "Habilidades",
+          expHeader: "Experiência Profissional",
+          exp1Date: "fev de 2025 - fev de 2026",
+          exp1Title: "Bolsista Front-End • UFOPA",
+          exp1Desc: "Modernização e adequação do portal universitário ao Padrão Digital do Governo. Atuação no redesign e reestruturação focando em acessibilidade (WCAG 2.1) e aplicação do Design System federal.",
+          exp2Date: "set de 2024 - dez de 2024",
+          exp2Title: "Instrutora de Informática",
+          exp2Desc: "Instrutora de cursos de Informática e Montagem/Manutenção de Computadores. Responsável pela criação de atividades educativas voltadas para inclusão digital e autonomia técnica dos alunos.",
+          accessBtn: "Veja Mais",
+          projects: [
+            { title: 'Banzeiro', subtitle: "Jogo voltado para conscientização ambiental, selecionado na 14ª edição do programa Campus Mobile", link: "https://sapogamesofc.itch.io/banzeiro" },
+            { title: 'Transportar', subtitle: "Sistema voltado para monitoramento do transporte escolar em zonas rurais, selecionado no Desafio LED 2026 representado por Flavio Arthur", link: "https://somos.globo.com/movimento-led-luz-na-educacao/desafio-led/noticia/desafio-led-globo-2026-recebe-mais-de-3820-inscricoes-e-avanca-para-a-proxima-fase.ghtml" },
+            { title: 'Geobot', subtitle: "Jogo voltado para o ensino de Geofísica", link: "https://sapogamesofc.itch.io/geobot" }
+          ],
+          social: [
+            { title: "Centro Acadêmico de Sistemas de Informação", desc: "Membro: Atuação ativa na representação estudantil e organização de eventos técnicos, promovendo a integração entre alunos.", link: "https://www.instagram.com/casiufopa/" },
+            { title: "Inclusão Digital e Sustentabilidade", desc: "Membro: Capacitação de jovens através do ensino de informática e manutenção de computadores, unindo tecnologia e consciência ambiental no Instituto Descarte Correto.", link: "https://www.instagram.com/institutodescartecorreto/" },
+            { title: "Protagonismo na Computação", desc: "Voluntária: Iniciativas para incentivar e capacitar mulheres na tecnologia, combatendo a desigualdade de gênero e criando redes de apoio no setor tech.", link: "https://www.instagram.com/perolas_digitais/" },
+            { title: "Desenvolvimento de Jogos Locais", desc: "Membro: Atuação ativa no fomento ao desenvolvimento de jogos no contexto amazônico.", link: "https://sapogames.github.io/Sapo-Games/" }
+          ]
+        },
+        en: {
+          navSobre: "About Me",
+          navProducoes: "Productions",
+          navSociais: "Social Projects",
+          navExperiencias: "Experiences",
+          introTitle: "Hello! I'm Ryani",
+          introText: "I'm an Information Systems student at UFOPA, exploring the fields of design, web development, and digital games. I develop dynamic, interactive digital experiences with a unique visual identity.",
+          skillsTitle: "Skills",
+          expHeader: "Professional Experience",
+          exp1Date: "Feb 2025 - Feb 2026",
+          exp1Title: "Front-End Fellow • UFOPA",
+          exp1Desc: "Modernizing the university portal according to the Government Digital Standard. Focusing on redesign and restructuring for accessibility (WCAG 2.1) and applying the federal Design System.",
+          exp2Date: "Sep 2024 - Dec 2024",
+          exp2Title: "IT Instructor",
+          exp2Desc: "Instructor for IT and Hardware Maintenance courses. Responsible for creating educational activities focused on digital inclusion and technical autonomy for students.",
+          accessBtn: "View Project",
+          projects: [
+            { title: 'Banzeiro', subtitle: "An environmental awareness game, selected for the 14th edition of the Campus Mobile program", link: "https://sapogamesofc.itch.io/banzeiro" },
+            { title: 'Transportar', subtitle: "A system for monitoring school transport in rural areas, selected for the 2024 LED Challenge", link: "https://somos.globo.com/movimento-led-luz-na-educacao/desafio-led/noticia/desafio-led-globo-2026-recebe-mais-de-3820-inscricoes-e-avanca-para-a-proxima-fase.ghtml" },
+            { title: 'Geobot', subtitle: "Game focused on teaching Geophysics", link: "https://sapogamesofc.itch.io/geobot" }
+          ],
+          social: [
+            { title: "Academic Center for IT Students", desc: "Volunteer: Actively representing students and organizing technical events to bridge the gap between academia and the industry.", link: "https://www.instagram.com/casiufopa/" },
+            { title: "Digital Inclusion & Sustainability", desc: "Volunteer: Empowering youth through IT and computer maintenance training, merging technology with environmental awareness.", link: "https://www.instagram.com/institutodescartecorreto/" },
+            { title: "Women in Tech Empowerment", desc: "Volunteer: Initiatives to encourage and empower women in technology, tackling gender inequality and building support networks.", link: "https://www.instagram.com/perolas_digitais/" },
+            { title: "Local Game Development", desc: "Member: Actively participating in local game development initiatives within the Amazonian context.", link: "https://sapogames.github.io/Sapo-Games/" }
+          ]
+        }
+      };
+
+      let currentLang = 'pt';
+
+      function changeLanguage(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          btn.classList.remove('border-b-2', 'border-white', 'opacity-60');
+          if (btn.id === `lang-${lang}`) btn.classList.add('border-b-2', 'border-white');
+          else btn.classList.add('opacity-60');
+        });
+
+        // Update Static Elements
+        document.querySelector('[data-target="sobre-mim"]').innerText = t.navSobre;
+        document.querySelector('[data-target="producoes"]').innerText = t.navProducoes;
+        document.querySelector('[data-target="projetos-sociais"]').innerText = t.navSociais;
+        document.querySelector('[data-target="experiencias"]').innerText = t.navExperiencias;
+        document.getElementById('intro-title').innerText = t.introTitle;
+        document.getElementById('intro-text').innerText = t.introText;
+        document.getElementById('skills-title').innerText = t.skillsTitle;
+        document.getElementById('exp-header').innerText = t.expHeader;
+        document.getElementById('exp1-date').innerText = t.exp1Date;
+        document.getElementById('exp1-title').innerText = t.exp1Title;
+        document.getElementById('exp1-desc').innerText = t.exp1Desc;
+        document.getElementById('exp2-date').innerText = t.exp2Date;
+        document.getElementById('exp2-title').innerText = t.exp2Title;
+        document.getElementById('exp2-desc').innerText = t.exp2Desc;
+
+        updateSocialSlider(currentSocial, false);
+        initProject(activeProject);
+      }
+      const projectImages = [
+        ['./producao1/img1.png', './producao1/img2.png'],
+        ['./producao2/img2.png', './producao2/img1.png'],
+        ['./producoes3/img1.png', './producoes3/img4.png']
+      ];
+
+      let activeProject = 0;
+      const titleContainer = document.getElementById('title-container');
+      const imageContainer = document.getElementById('project-images-container');
+      const subtitleContainer = document.getElementById('subtitle-container');
+      const navBtn = document.getElementById('next-project-btn');
+      const navIcon = document.getElementById('nav-icon');
+      const gradient = document.getElementById('proj-gradient');
+      const circles = document.getElementById('proj-circles');
+
+      function randomBetween(min, max) {
+        return min + Math.random() * (max - min);
+      }
+
+      function initProject(index) {
+        const t = translations[currentLang].projects;
+        
+        navIcon.innerText = index < t.length - 1 ? 'arrow_forward' : 'refresh';
+
+        const currentSpans = titleContainer.querySelectorAll('span');
+        if (currentSpans.length > 0) {
+          gsap.to(currentSpans, {
+            duration: 1,
+            opacity: 0,
+            y: () => randomBetween(-150, -200),
+            rotation: () => randomBetween(-45, 45),
+            ease: "circ.out",
+            onComplete: () => renderNewProject(index)
+          });
+          gsap.to(subtitleContainer, { duration: 0.5, opacity: 0 });
+          gsap.to('#project-link', { duration: 0.5, opacity: 0 });
+
+          const currentImgs = imageContainer.querySelectorAll('img');
+          if (currentImgs.length > 0) gsap.to(currentImgs, { duration: 0.5, opacity: 0, y: 50, ease: "power2.in" });
+        } else {
+          renderNewProject(index);
+        }
+      }
+
+      function renderNewProject(index) {
+        const item = translations[currentLang].projects[index];
+        const images = projectImages[index];
+        
+        titleContainer.innerHTML = '';
+        (item.title || "").split('').forEach(char => {
+          const span = document.createElement('span');
+          span.innerHTML = char === ' ' ? '&nbsp;' : char;
+          span.style.display = 'inline-block';
+          span.style.position = 'relative';
+          span.style.opacity = '0';
+          span.style.color = '#FFF';
+          span.style.textShadow = '2px 2px 4px rgba(0,0,0,0.5)';
+          titleContainer.appendChild(span);
+        });
+
+        subtitleContainer.innerHTML = `<span class="text-xl md:text-2xl">${item.subtitle}</span>`;
+        subtitleContainer.style.opacity = '0';
+        const projectLink = document.getElementById('project-link');
+        const projectLinkText = document.getElementById('project-link-text');
+        if (projectLink && projectLinkText) {
+          projectLink.href = item.link || '#';
+          projectLinkText.innerText = translations[currentLang].accessBtn;
+          projectLink.style.display = item.link ? 'inline-flex' : 'none';
+        }
+        imageContainer.innerHTML = '';
+        if (images) {
+          images.forEach((src, i) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = 'absolute w-40 md:w-56 h-auto rounded-xl object-cover ';
+            const isLeft = i === 0;
+            
+            img.style.left = isLeft ? '10%' : '90%';
+            img.style.top = '50%';
+            const rotation = isLeft ? -5 : 5;
+            img.style.opacity = '0';
+            img.style.zIndex = 5 - i;
+            
+            imageContainer.appendChild(img);
+
+            gsap.fromTo(img, 
+              { opacity: 0, y: 30, scale: 0.8, rotation: rotation * 1.5, xPercent: -50, yPercent: -50 },
+              { duration: 0.8, delay: 0.4 + (i * 0.1), opacity: 1, y: 0, scale: 0.9, rotation: rotation, ease: "circ.out" }
+            );
+          });
+        }
+        const newSpans = titleContainer.querySelectorAll('span');
+        gsap.fromTo(newSpans, 
+          { opacity: 0, y: () => randomBetween(30, 50), rotation: () => randomBetween(-55, 55) },
+          { duration: 1, delay: 0.2, opacity: 1, y: 0, rotation: 0, ease: "circ.out" }
+        );
+        gsap.to(subtitleContainer, { duration: 1, delay: 0.5, opacity: 1 });
+        gsap.to('#project-link', { duration: 1, delay: 0.5, opacity: 1 });
+        gsap.to(gradient, {
+          duration: 2,
+          x: -(index * 25) + "%",
+          ease: "circ.out"
+        });
+        gsap.to(circles, {
+          duration: 2,
+          delay: 0.2,
+          x: (index * 15) + "%",
+          ease: "power2.out"
+        });
+      }
+
+      navBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        activeProject = (activeProject + 1) % translations[currentLang].projects.length;
+        initProject(activeProject);
+      });
+      const socialImages = [
+        [
+          "/projeto3/img1.jpeg",
+          "/projeto3/img2.jpeg",
+          "/projeto3/img4.jpeg",
+          "/projeto3/img3.jpeg"
+        ],
+        [
+          "/projeto1/img1.jpeg",
+          "/projeto1/img2.jpeg",
+          "/projeto1/img4.jpeg",
+          "/projeto1/img3.jpeg"
+        ],
+        [
+          "/projeto2/img1.jpeg",
+          "/projeto2/img2.jpeg",
+          "/projeto2/img4.jpeg",
+          "/projeto2/img3.jpeg"
+        ],
+        [
+          "/projeto4/img1.jpeg",
+          "/projeto4/img2.jpeg",
+          "/projeto4/img4.jpeg",
+          "/projeto4/img3.jpeg"
+        ]
+      ];
+      let currentSocial = 0;
+      function updateSocialSlider(index, animate = true) {
+        const item = translations[currentLang].social[index];
+        const images = socialImages[index];
+        if (!item) return;
+        
+        const updateContent = () => {
+          document.getElementById('social-title').innerText = item.title;
+          document.getElementById('social-desc').innerText = item.desc;
+          document.getElementById('social-link').href = item.link || '#';
+          document.getElementById('social-link-text').innerText = translations[currentLang].accessBtn;
+          const imgs = document.querySelectorAll('.social-img');
+          images.forEach((src, i) => { if(imgs[i]) imgs[i].src = src; });
+        };
+
+        if (animate) {
+          gsap.to(['#social-title', '#social-desc', '.social-img'], {
+            opacity: 0,
+            y: 20,
+            duration: 0.3,
+            onComplete: () => {
+              updateContent();
+              gsap.to(['#social-title', '#social-desc', '.social-img'], { opacity: 1, y: 0, duration: 0.4, stagger: 0.05 });
+            }
+          });
+        } else {
+          updateContent();
+        }
+      }
+
+      document.getElementById('next-social')?.addEventListener('click', () => {
+        currentSocial = (currentSocial + 1) % translations[currentLang].social.length;
+        updateSocialSlider(currentSocial);
+      });
+      document.getElementById('prev-social')?.addEventListener('click', () => {
+        currentSocial = (currentSocial - 1 + translations[currentLang].social.length) % translations[currentLang].social.length;
+        updateSocialSlider(currentSocial);
+      });
+
+      const navTabs = document.querySelectorAll('.nav-tab');
+      const sections = document.querySelectorAll('.portfolio-section');
+      const areaBg = document.querySelector('.area');
+      const sliderBg = document.getElementById('slider-bg');
+
+      navTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          navTabs.forEach(t => {
+            t.classList.remove('opacity-100', 'scale-105', 'active-tab', 'nav-btn');
+            t.classList.add('opacity-70');
+          });
+          tab.classList.remove('opacity-70');
+          tab.classList.add('opacity-100', 'scale-105', 'active-tab', 'nav-btn');
+
+          tab.classList.remove('animate');
+          void tab.offsetWidth;
+          tab.classList.add('animate');
+          setTimeout(() => {
+            tab.classList.remove('animate');
+          }, 700);
+          sections.forEach(sec => {
+            sec.classList.add('hidden');
+            sec.classList.remove('animate-fade-in');
+          });
+          
+          // Show target section
+          const targetId = tab.getAttribute('data-target');
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.classList.remove('hidden');
+            void targetSection.offsetWidth;
+            targetSection.classList.add('animate-fade-in');
+            if (targetId === 'producoes' && typeof initProject === 'function') {
+              sliderBg.style.display = 'block';
+              areaBg.style.display = 'none';
+              initProject(0);
+            } else {
+              sliderBg.style.display = 'none';
+              areaBg.style.display = 'block';
+            }
+            if (targetId === 'projetos-sociais' && typeof updateSocialSlider === 'function') {
+              updateSocialSlider(currentSocial, false);
+            }
+          }
+        });
+      });
+      window.addEventListener('load', () => {
+        if (typeof initProject === 'function') {
+          initProject(0);
+        }
+      });
+    </script>
+  </body>
+</html>
