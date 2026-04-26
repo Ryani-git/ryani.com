@@ -4,25 +4,15 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Ryani.com</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Nunito:wght@400;700;900&family=Bungee&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Tailwind Play CDN (para desenvolvimento/portfólio simples) -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
             colors: {
-              primary: "#facc15", // Bright Yellow
+              primary: "#facc15",
               "dark": "rgb(88 89 91)",
             },
             fontFamily: {
@@ -37,6 +27,17 @@
         },
       };
     </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Nunito:wght@400;700;900&family=Bungee&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
       @import url("https://fonts.googleapis.com/css?family=Lilita+One&display=swap");
       .area {
@@ -694,7 +695,7 @@
       const projectImages = [
         ['./producao1/img1.png', './producao1/img2.png'],
         ['./producao2/img2.png', './producao2/img1.png'],
-        ['./producoes3/img1.png', './producoes3/img4.png']
+        ['./producao3/img1.png', './producao3/img4.png']
       ];
 
       let activeProject = 0;
@@ -827,10 +828,10 @@
           "./projeto2/img3.jpeg"
         ],
         [
-          "./projeto4/img1.png",
-          "./projeto4/img2.png",
-          "./projeto4/img4.png",
-          "./projeto4/img3.png"
+          "./projeto4/img1.jpeg",
+          "./projeto4/img2.jpeg",
+          "./projeto4/img4.jpeg",
+          "./projeto4/img3.jpeg"
         ]
       ];
       let currentSocial = 0;
